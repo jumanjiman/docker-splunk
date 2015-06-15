@@ -21,12 +21,7 @@ RUN yum -y --nogpgcheck localinstall /tmp/splunk-6.2.3-264376.i386.rpm
 # Remove yum metadata.
 RUN yum clean all
 
-# Install Splunk.
-ADD install.sh /tmp/
-RUN /tmp/install.sh
-
-# Start Splunk.
-# add enterprise license if applicable
+# Start Splunk: add enterprise license if applicable
 # RUN /opt/splunk/bin/ ./splunk add licenses /opt/splunk/etc/licenses/enterprise/enterprise.lic
 
 # Start splunk and accept the free license
