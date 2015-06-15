@@ -26,7 +26,7 @@ deployment:
     owner: cleanerbot
     commands:
       - docker login -e ${mail} -u ${user} -p ${pass}
-      - docker tag sometheycallme/docker-splunk sometheycallme/vaultalpha:0.0.1-${CIRCLE_SHA1:0:7}
+      - docker tag sometheycallme/docker-splunk sometheycallme/docker-splunk:0.0.1-${CIRCLE_SHA1:0:7}
       - docker push sometheycallme/docker-splunk:0.0.1-${CIRCLE_SHA1:0:7}
       - docker push sometheycallme/docker-splunk:latest
       - docker logout
