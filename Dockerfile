@@ -20,6 +20,7 @@ RUN yum -y --nogpgcheck localinstall /tmp/splunk-6.2.3-264376.i386.rpm
 
 # Remove yum metadata.
 RUN yum clean all
+RUN ls /opt/splunk
 
 # Add install script
 ADD install.sh /tmp/
