@@ -8,7 +8,7 @@ echo "Build images."
 docker build $options -t sometheycallme/docker-splunk .
 
 echo "Show image sizes."
-docker images | egrep '^vault\b' | sort
+docker images | egrep '^splunk\b' | sort
 
 echo
 echo "WARN: you should docker tag the docker-splunk image."
