@@ -1,6 +1,5 @@
-plunk on Centos
+# Splunk on Centos
 # http://splunk.com
-
 # https://index.docker.io/_/centos/
 FROM centos
 
