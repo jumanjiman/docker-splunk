@@ -23,7 +23,7 @@ RUN yum clean all
 # RUN /opt/splunk/bin ./splunk start --accept-license
 COPY install.sh .
 RUN chmod 755 install.sh
-RUN install.sh
+RUN sh install.sh
 
 # Add install script
 # ADD install.sh /tmp/
