@@ -13,13 +13,18 @@ RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noar
 
 # Get splunk RPM
 # requires splunk account
-ADD http://download.splunk.com/products/splunk/releases/6.2.3/splunk/linux/splunk-6.2.3-264376.i386.rpm /tmp/
+# 32-bit URL 
+# ADD http://download.splunk.com/products/splunk/releases/6.2.3/splunk/linux/splunk-6.2.3-264376.i386.rpm /tmp/
+
+# 64-bit url
+ADD http://download.splunk.com/products/splunk/releases/6.2.3/splunk/linux/splunk-6.2.3-264376-linux-2.6-x86_64.rpm /tmp/
 
 # use default install /opt/splunk
-RUN yum -y --nogpgcheck localinstall /tmp/splunk-6.2.3-264376.i386.rpm 
+RUN yum -y --nogpgcheck localinstall /tmp/splunk-6.2.3-264376-linux-2.6-x86_64.rpm 
 
 # Remove yum metadata.
 RUN yum clean all
+
 # RUN /opt/splunk/bin ./splunk start --accept-license
 COPY install.sh .
 RUN chmod 755 install.sh
