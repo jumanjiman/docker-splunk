@@ -5,4 +5,4 @@
 
 # Start splunk and accept the free license
 cd /opt/splunk/bin 
-./splunk start --accept-license
+splunk start --accept-license
