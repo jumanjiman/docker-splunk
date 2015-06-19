@@ -21,9 +21,9 @@ RUN yum -y --nogpgcheck localinstall /tmp/splunk-6.2.3-264376.i386.rpm
 # Remove yum metadata.
 RUN yum clean all
 # RUN /opt/splunk/bin ./splunk start --accept-license
-COPY install.sh /tmp
-RUN chmod 755 /tmp/install.sh
-RUN /tmp/install.sh
+COPY install.sh .
+RUN chmod 755 install.sh
+RUN install.sh
 
 # Add install script
 # ADD install.sh /tmp/
