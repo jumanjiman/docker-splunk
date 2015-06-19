@@ -30,4 +30,4 @@ RUN yum clean all
 # RUN /opt/splunk/bin/ splunk add licenses /opt/splunk/etc/licenses/enterprise/enterprise.lic
 
 # Start splunk and accept the free license
-RUN /opt/splunk/bin splunk start --accept-license
+RUN /opt/splunk/bin ./splunk start --accept-license
