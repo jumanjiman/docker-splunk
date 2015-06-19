@@ -4,5 +4,4 @@
 # chown -R splunk:splunk /opt/splunk
 
 # Start splunk and accept the free license
-cd /opt/splunk/bin 
-./splunk start --accept-license
+/opt/splunk/bin ./splunk start --accept-license
