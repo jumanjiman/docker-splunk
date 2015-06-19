@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Ensure disired ownership.
-cd /opt
-chown -R splunk:splunk /splunk
+# chown -R splunk:splunk /opt/splunk
 
 # Start splunk and accept the free license
 cd /opt/splunk/bin
