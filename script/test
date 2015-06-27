@@ -2,5 +2,8 @@
 set -ex -o pipefail
 
 echo "Step1: Test for basic splunk install"
-docker run -t -i --entrypoint bash sometheycallme/docker-splunk -c "ls /opt" | grep splunk 
+docker run -t -i --entrypoint bash sometheycallme/docker-splunk -c "ls -l /opt" | grep splunk 
+
+docker rm -f splunkd || :
+docker run -d --name splunkd -p 8000:8000 sometheycallme/docker-splunk
 
