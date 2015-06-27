@@ -30,9 +30,9 @@ RUN yum -y --nogpgcheck localinstall /tmp/splunk-6.2.3-264376-linux-2.6-x86_64.r
 RUN yum clean all
 
 # RUN /opt/splunk/bin ./splunk start --accept-license
-COPY install.sh .
-RUN chmod 755 install.sh
-RUN sh install.sh
+# COPY install.sh .
+# RUN chmod 755 install.sh
+# RUN sh install.sh
 
 # Add install script
 # ADD install.sh /tmp/
@@ -42,4 +42,5 @@ RUN sh install.sh
 # RUN /opt/splunk/bin/ splunk add licenses /opt/splunk/etc/licenses/enterprise/enterprise.lic
 
 # Start splunk and accept the free license
-# RUN /opt/splunk/bin/./splunk start --accept-license
+ENTRYPOINT ["/opt/splunk/bin/splunk start --accept-license"]
+EXPOSE 8000
