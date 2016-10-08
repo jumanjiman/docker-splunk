@@ -1,0 +1,37 @@
+# http://splunk.com
+FROM alpine:3.2
+
+# https://github.com/sometheycallme
+MAINTAINER Tim Kropp <timkropp77@gmail.com>
+
+# Update the base image.
+# RUN yum -y update
+
+RUN apk add --update bash wget ca-certificates && \
+    wget "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk" \
+         "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-bin-2.21-r2.apk" && \
+    apk add --allow-untrusted glibc-2.21-r2.apk glibc-bin-2.21-r2.apk && \
+    /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
+    echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
+    rm /var/cache/apk/*
+
+#RUN apk upgrade --update --available && \
+#    apk add \
+#      bash \
+#      && \
+#    rm -f /var/cache/apk/*
+
+# Get splunk RPM
+# requires splunk account
+#ADD http://download.splunk.com/products/splunk/releases/6.2.3/splunk/linux/splunk-6.2.3-264376-linux-2.6-x86_64.rpm /tmp/
+ADD http://download.splunk.com/products/splunk/releases/6.2.3/splunk/linux/splunk-6.2.3-264376-Linux-x86_64.tgz /tmp/
+RUN mkdir /opt && \
+    tar xvzf /tmp/splunk-*.tgz -C /opt
+
+RUN /opt/splunk/bin/splunk enable boot-start --accept-license
+
+# Start Splunk: add enterprise license if applicable
+# RUN /opt/splunk/bin/ splunk add licenses /opt/splunk/etc/licenses/enterprise/enterprise.lic
+
+# Start splunk and accept the free license
+# RUN /opt/splunk/bin/./splunk start --accept-license
